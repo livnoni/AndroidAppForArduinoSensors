@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                             serialPort.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
                             serialPort.read(mCallback);
                             buttonStart.setText("Serial Connection Opened!");
+                            buttonStart.setBackgroundColor(Color.GREEN);
 
                         } else {
                             Log.d("SERIAL", "PORT NOT OPEN");
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         usbManager = (UsbManager) getSystemService(this.USB_SERVICE);
 
         buttonStart = (Button) findViewById(R.id.buttonConnectOTG);
+        buttonStart.setBackgroundColor(Color.RED);
         buttonClear = (Button) findViewById(R.id.buttonClear);
         dataBox = (TextView) findViewById(R.id.dataRecived);
         dataBox.setMovementMethod(new ScrollingMovementMethod());
